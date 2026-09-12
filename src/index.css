@@ -1,0 +1,247 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Primary Color System - Red / Off-White / Deep Charcoal */
+    /* DARK */
+    --bg-dark-primary: #111613;
+    --bg-dark-secondary: #161B18;
+    --bg-dark-elevated: #1C221F;
+    --bg-dark-deep: #0B0F0D;
+
+    /* LIGHT */
+    --bg-light-primary: #F4F1EA;
+    --bg-light-bright: #FAF9F5;
+    --bg-light-secondary: #E8E5DE;
+
+    /* TEXT ON DARK */
+    --text-dark-primary: #F4F1EA;
+    --text-dark-secondary: #C2C5C0;
+    --text-dark-muted: #858C87;
+
+    /* TEXT ON LIGHT */
+    --text-light-primary: #111613;
+    --text-light-secondary: #424844;
+    --text-light-muted: #707671;
+
+    /* ACCENT - Single Disciplined Red */
+    --accent-red: #FF0000;
+    --accent-red-hover: #D90000;
+    --accent-red-subtle: rgba(255, 0, 0, 0.08);
+    --accent-red-hairline: rgba(255, 0, 0, 0.35);
+
+    /* Hairlines */
+    --border-dark-hairline: rgba(244, 241, 234, 0.10);
+    --border-light-hairline: rgba(17, 22, 19, 0.14);
+
+    --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html {
+    scroll-behavior: auto !important; /* Lenis handles smooth scrolling */
+    background-color: var(--bg-dark-primary);
+    color: var(--text-dark-primary);
+    font-family: var(--font-body);
+    overflow-x: clip;
+    max-width: 100vw;
+  }
+
+  body {
+    overflow-x: clip;
+    max-width: 100vw;
+    background-color: #111613;
+    color: #F4F1EA;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.03em;
+  }
+
+  /* Minimalist studio scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #111613;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1C221F;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FF0000;
+  }
+}
+
+/* Light Chapter System */
+.section-light {
+  background-color: var(--bg-light-primary);
+  color: var(--text-light-primary);
+}
+
+.section-light-bright {
+  background-color: var(--bg-light-bright);
+  color: var(--text-light-primary);
+}
+
+.border-light-hairline {
+  border-color: rgba(17, 22, 19, 0.14);
+}
+
+.divide-light-hairline > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgba(17, 22, 19, 0.14);
+}
+
+/* Dark Chapter System */
+.section-dark {
+  background-color: var(--bg-dark-primary);
+  color: var(--text-dark-primary);
+}
+
+.section-dark-secondary {
+  background-color: var(--bg-dark-secondary);
+  color: var(--text-dark-primary);
+}
+
+.section-dark-deep {
+  background-color: var(--bg-dark-deep);
+  color: var(--text-dark-primary);
+}
+
+.border-dark-hairline {
+  border-color: rgba(244, 241, 234, 0.10);
+}
+
+/* Backwards compatibility aliases with studio restraint */
+.glass-panel {
+  background: rgba(17, 22, 19, 0.60);
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+  border: 1px solid rgba(244, 241, 234, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Header Pure Glass Plate */
+.header-glass {
+  background: rgba(17, 22, 19, 0.58);
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+  border-bottom: 1px solid rgba(244, 241, 234, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .header-glass {
+    background: rgba(17, 22, 19, 0.94);
+  }
+}
+
+/* Pure Physical Glass Card - Dark Environment (Featured Projects / Inquire) */
+.glass-material-dark {
+  background: rgba(244, 241, 234, 0.055);
+  backdrop-filter: blur(18px) saturate(115%);
+  -webkit-backdrop-filter: blur(18px) saturate(115%);
+  border: 1px solid rgba(244, 241, 234, 0.12);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-material-dark:hover {
+  background: rgba(244, 241, 234, 0.075);
+  backdrop-filter: blur(20px) saturate(118%);
+  -webkit-backdrop-filter: blur(20px) saturate(118%);
+  border-color: rgba(255, 0, 0, 0.28);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.09);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-material-dark {
+    background: rgba(22, 27, 24, 0.94);
+  }
+}
+
+.glass-card {
+  background: rgba(22, 27, 24, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(244, 241, 234, 0.10);
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 0, 0, 0.35);
+}
+
+/* Subtle typography contrast */
+.text-lead {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  line-height: 1.5;
+  color: #F4F1EA;
+  letter-spacing: -0.015em;
+}
+
+/* Minimalist studio form inputs */
+.studio-input {
+  width: 100%;
+  background: transparent;
+  border-bottom: 1px solid rgba(244, 241, 234, 0.12);
+  padding: 0.875rem 0;
+  color: #F4F1EA;
+  font-size: 0.9375rem;
+  transition: border-color 0.25s ease;
+}
+
+.studio-input:focus {
+  outline: none;
+  border-bottom-color: #FF0000;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  background-color: rgba(22, 27, 24, 0.6);
+  border: 1px solid rgba(244, 241, 234, 0.10);
+  color: #F4F1EA;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #FF0000;
+  background-color: rgba(28, 34, 31, 0.95);
+}
+
+/* Hide scrollbar utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
