@@ -29,7 +29,7 @@ export interface Project {
   techStack: string[];
   githubUrl?: string;
   liveUrl?: string;
-  status: 'Deployed' | 'Production Ready' | 'Active Development' | 'Experimental Architecture';
+  status: 'Built' | 'Implemented' | 'Engineered' | 'Developed' | 'Open-source repository' | 'Active Development' | 'Experimental Architecture';
   featured: boolean;
   metrics: { label: string; value: string }[];
 }

@@ -198,8 +198,8 @@ export const ProjectsSection: React.FC = () => {
                       <span className="text-[#F4F1EA] font-semibold">{project.techStack[0]}</span>
                     </div>
                     <div className="col-span-2 sm:col-span-1">
-                      <span className="text-[#858C87] block text-[10px]">DEPLOYMENT</span>
-                      <span className="text-[#FF0000] font-semibold">CLOUD / SERVERLESS</span>
+                      <span className="text-[#858C87] block text-[10px]">ARCHITECTURE</span>
+                      <span className="text-[#F4F1EA] font-semibold">AUTOMATION PIPELINE</span>
                     </div>
                   </div>
 
@@ -217,12 +217,12 @@ export const ProjectsSection: React.FC = () => {
                 </div>
 
                 {/* Action Strip */}
-                <div className="pt-6 border-t border-white/10 flex items-center justify-between">
+                <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
                   <button
                     onClick={() => setSelectedProjectId(project.id)}
                     className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-[#F4F1EA] hover:text-[#FF0000] transition-colors font-medium focus:outline-none"
                   >
-                    <span>INSPECT CASE STUDY</span>
+                    <span>INSPECT ARCHITECTURE</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-[#FF0000]" />
                   </button>
 
@@ -231,10 +231,11 @@ export const ProjectsSection: React.FC = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#858C87] hover:text-[#F4F1EA] transition-colors flex items-center gap-1.5 text-xs font-mono"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-[#FF0000] text-[#F4F1EA] hover:text-white border border-white/15 hover:border-[#FF0000] transition-all text-xs font-mono font-semibold tracking-wider uppercase group/btn"
                     >
-                      <Github className="w-4 h-4" />
-                      <span className="hidden sm:inline">REPOSITORY</span>
+                      <Github className="w-4 h-4 text-[#F4F1EA] group-hover/btn:text-white" />
+                      <span>VIEW GITHUB REPOSITORY</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 opacity-70 group-hover/btn:opacity-100" />
                     </a>
                   )}
                 </div>

@@ -113,7 +113,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
           {/* Core Technologies */}
           <div className="space-y-3 pt-2 border-t border-white/5">
             <h4 className="font-mono text-xs text-[#858C87] uppercase tracking-wider">
-              TECHNOLOGIES DEPLOYED
+              TECHNOLOGIES &amp; TOOLS
             </h4>
             <div className="flex flex-wrap gap-2">
               {project.techStack.map((tech) => (
@@ -131,7 +131,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
           <div className="p-5 bg-[#0B0F0D] border border-white/10 space-y-3">
             <div className="flex items-center gap-2 font-mono text-xs text-[#FF0000] font-semibold uppercase">
               <Check className="w-4 h-4 text-[#FF0000]" />
-              MEASURED METRICS &amp; IMPACT
+              PIPELINE SPECIFICATIONS &amp; STACK
             </div>
             <div className="grid grid-cols-3 gap-4">
               {project.metrics.map((metric, idx) => (
@@ -150,10 +150,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono text-[#F4F1EA] bg-white/5 hover:bg-white/10 border border-white/10 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono text-white bg-[#FF0000] hover:bg-[#CC0000] border border-[#FF0000] transition-colors font-semibold uppercase tracking-wider"
               >
-                <Github className="w-3.5 h-3.5" />
-                VIEW REPOSITORY
+                <Github className="w-4 h-4" />
+                OPEN GITHUB REPOSITORY ↗
               </a>
             ) : <span />}
 
@@ -164,7 +164,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono text-[#111613] bg-[#F4F1EA] hover:bg-white transition-colors font-semibold"
               >
-                LIVE DEPLOYMENT
+                LIVE LINK
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             )}

@@ -1,5 +1,14 @@
 import { Project, TechItem, Capability, ContactInfo } from '../types';
 
+export const SITE_CONFIG = {
+  domain:
+    (typeof globalThis !== 'undefined' && (globalThis as any).process?.env?.VITE_SITE_URL) ||
+    'https://buildwitharyan.vercel.app',
+  name: 'Aryan Portfolio',
+  brandTitle: 'HE KNOWS SOMETHING',
+  brandTagline: '// DIGITAL PRACTICE',
+};
+
 export const PERSONAL_INFO: ContactInfo = {
   email: 'aryankashyap9888@gmail.com',
   phone: '+91 9888323328',
@@ -81,76 +90,69 @@ export const WHAT_I_BUILD: Capability[] = [
 
 export const PROJECTS: Project[] = [
   {
-    id: 'whatsapp-lead-pipeline',
-    title: 'WhatsApp Lead Automation Pipeline',
-    tagline: 'Event-driven Meta WhatsApp Cloud API workflow for automated qualification and follow-up.',
-    category: 'AI & Automation',
-    question: 'Could an incoming conversation be turned into a qualified lead without someone manually moving information between tools?',
-    summary: 'AI-powered lead automation workflow connecting incoming data, AI processing, automated response generation and downstream actions through an event-driven pipeline.',
-    problem: 'Manual lead response times cause high churn and lost opportunities during peak traffic.',
-    solution: 'Engineered an automated WhatsApp chatbot pipeline using Meta Cloud API, n8n webhooks, and AI text synthesis.',
+    id: 'social-media-content-automation',
+    title: 'AI-Powered Social Media Content Creation & Automation Platform',
+    tagline: 'End-to-end pipeline combining article scraping, LLM distillation, video synthesis, and multi-platform distribution.',
+    category: 'Content Automation & Systems',
+    question: 'How do you engineer a fully automated pipeline that reliably turns web articles into short-form video assets and scheduled multi-platform posts?',
+    summary: 'End-to-end automated content pipeline that scrapes articles, uses LLMs for translation and summarization, generates short-form video content, tracks publishing state, and automates distribution across multiple social platforms. Includes scheduling, queue management, rate limiting, and database-backed posting tracking.',
+    problem: 'Manual content production across multiple channels requires fragmented tools, manual translation, manual video editing, and error-prone distribution schedules.',
+    solution: 'Engineered an automated content engine leveraging Python, LLM reasoning for translation and summarization, MoviePy for automated short-form video synthesis, and database-backed queuing for rate-limited social distribution.',
     architecture: [
-      'Meta WhatsApp Business Cloud API webhook listeners',
-      'n8n event-driven pipeline for lead qualification and status routing',
-      'Automated follow-up dispatch with CRM synchronization'
+      'Automated web scrapers extracting raw source articles and metadata',
+      'LLM reasoning pipeline for multilingual translation, synthesis, and script structuring',
+      'MoviePy dynamic video compilation pipeline rendering short-form video assets',
+      'Database-backed posting tracking with queue management and API rate limiting',
+      'Multi-channel dispatching handlers across social media endpoints'
     ],
-    techStack: ['React', 'n8n', 'WhatsApp API', 'AI', 'Automation', 'Webhooks'],
-    githubUrl: 'https://github.com/ARYAN24SCSE',
-    status: 'Production Ready',
+    techStack: [
+      'Python',
+      'LLM Automation',
+      'Web Scraping',
+      'Content Automation',
+      'Social Media Automation',
+      'MoviePy'
+    ],
+    githubUrl: 'https://github.com/ARYAN24SCSE/SocialMediaContentCreationAndPostingAutomationPlatform',
+    status: 'Engineered',
     featured: true,
     metrics: [
-      { label: 'Response', value: '<2.1s' },
-      { label: 'Conversion', value: '+42%' },
-      { label: 'Availability', value: '24/7' }
+      { label: 'Pipeline Stage', value: 'End-to-End' },
+      { label: 'Video Engine', value: 'MoviePy' },
+      { label: 'State Tracking', value: 'DB-Backed' }
     ]
   },
   {
-    id: 'ai-content-pipeline',
-    title: 'Autonomous AI Content Engine',
-    tagline: 'Multi-channel system transforming technical inputs into structured publications and communications.',
-    category: 'AI Systems',
-    question: 'How much of a repetitive multi-channel publishing workflow can be automated reliably using structured LLM schemas?',
-    summary: 'Centralized AI content pipeline that converts brief prompts into multi-platform technical assets, digital copy variations, and scheduled communication workflows.',
-    problem: 'Manual content production across multiple channels is repetitive, time-consuming, and inconsistent.',
-    solution: 'Built an orchestrated multi-LLM engine using Claude and OpenAI APIs with structured JSON output formatting.',
+    id: 'n8n-social-media-automations',
+    title: 'n8n Social Media Automation Workflows',
+    tagline: 'Orchestrated n8n workflows for automated social-media publishing and digital-marketing operations.',
+    category: 'Workflow Engineering',
+    question: 'How can complex multi-platform marketing operations and approval chains be orchestrated with zero-code and low-code reliability?',
+    summary: 'Collection of n8n automation workflows for social-media publishing and digital-marketing operations, including Facebook and Instagram posting, human approval flows, webhook triggers, image-generation workflows, engagement automation, and post-data management.',
+    problem: 'Cross-platform marketing execution often suffers from disconnected APIs, missing approval gates, and fragile manual handoffs.',
+    solution: 'Architected robust n8n workflow blueprints integrating Meta Graph APIs, conditional human approval triggers, automated visual asset pipelines, and structured post-data persistence.',
     architecture: [
-      'Multi-model LLM orchestration with prompt guardrails',
-      'Automated format transformers for markdown, emails, and social feeds',
-      'Continuous webhook triggers connecting output channels'
+      'Event-driven webhook triggers capturing inbound marketing requests and schedule events',
+      'Facebook Graph API & Instagram Graph API node integrations for automated media dispatch',
+      'Human-in-the-loop approval gates before publishing payload execution',
+      'Automated image generation pipelines paired with copywriting logic',
+      'Post-data logging and engagement tracking pipelines'
     ],
-    techStack: ['React', 'Python', 'Claude API', 'OpenAI', 'Zapier', 'Tailwind'],
-    githubUrl: 'https://github.com/ARYAN24SCSE',
-    status: 'Deployed',
+    techStack: [
+      'n8n',
+      'Workflow Automation',
+      'Facebook Graph API',
+      'Instagram Graph API',
+      'Webhooks',
+      'Social Media Automation'
+    ],
+    githubUrl: 'https://github.com/ARYAN24SCSE/n8n-automations',
+    status: 'Implemented',
     featured: true,
     metrics: [
-      { label: 'Turnaround', value: '10x Fast' },
-      { label: 'Accuracy', value: '98.5%' },
-      { label: 'Channels', value: '5 Feeds' }
-    ]
-  },
-  {
-    id: 'conversational-voice-agent',
-    title: 'Conversational Voice Outreach System',
-    tagline: 'Low-latency conversational voice bot handling automated inquiries and status checks.',
-    category: 'Conversational AI',
-    question: 'How natural can a voice agent feel in real time while still remaining predictable and accurate under the hood?',
-    summary: 'Interactive voice calling system connecting speech recognition, intent classification, and real-time CRM updates for automated outreach pipelines.',
-    problem: 'High-volume routine customer calls overwhelm support teams and introduce record-keeping errors.',
-    solution: 'Designed an automated calling bot pipeline with natural voice synthesis, speech intent parsing, and instant CRM logging.',
-    architecture: [
-      'Streaming speech-to-text with sub-600ms latency',
-      'Intent classification engine with fallback routing',
-      'Real-time webhook synchronization with SQLite/Redis backends'
-    ],
-    techStack: ['Python', 'FastAPI', 'Voice AI', 'WebSockets', 'n8n', 'SQLite'],
-    githubUrl: 'https://github.com/ARYAN24SCSE',
-    liveUrl: 'https://aryan.dev',
-    status: 'Production Ready',
-    featured: true,
-    metrics: [
-      { label: 'Latency', value: '<600ms' },
-      { label: 'Intent Accuracy', value: '95.2%' },
-      { label: 'Execution', value: 'Automated' }
+      { label: 'Workflow Engine', value: 'n8n' },
+      { label: 'Meta APIs', value: 'FB & IG Graph' },
+      { label: 'Control Flow', value: 'Human Approval' }
     ]
   }
 ];
