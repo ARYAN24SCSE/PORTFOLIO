@@ -147,14 +147,14 @@ export const StackedCards: React.FC = () => {
       </div>
 
       {/* 3D Stack Container */}
-      <div className="relative w-full h-80 sm:h-70 perspective-1000">
+      <div className="relative w-full h-96 xs:h-84 sm:h-72 perspective-1000">
         <AnimatePresence mode="popLayout">
           {cards.slice(0, 3).map((card, index) => {
             const isTop = index === 0;
             const Icon = getIcon(card.icon);
 
             // Dynamic 3D stack offset
-            const offsetY = index * 14;
+            const offsetY = index * 12;
             const scale = 1 - index * 0.05;
             const zIndex = 30 - index * 10;
             const opacity = 1 - index * 0.2;
@@ -172,7 +172,7 @@ export const StackedCards: React.FC = () => {
                 }}
                 exit={{ opacity: 0, scale: 0.8, x: 140 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                className={`absolute top-0 left-0 right-0 glass-card rounded-2xl p-5 sm:p-6 border transition-all duration-300 cursor-pointer ${
+                className={`absolute top-0 left-0 right-0 glass-card rounded-xl sm:rounded-2xl p-4 xs:p-5 sm:p-6 border transition-all duration-300 cursor-pointer ${
                   isTop
                     ? 'top-stack-card border-cyan-500/40 shadow-2xl shadow-cyan-950/40'
                     : 'border-white/10 hover:border-white/20'
@@ -180,41 +180,41 @@ export const StackedCards: React.FC = () => {
                 onClick={isTop ? handleNext : undefined}
                 whileHover={isTop ? { scale: scale * 1.02 } : {}}
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
-                      <Icon className="w-5 h-5" />
+                <div className="flex items-start justify-between mb-2 sm:mb-3 gap-2">
+                  <div className="flex items-center gap-2.5 sm:gap-3">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+                      <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
-                    <div>
-                      <span className="font-mono text-[10px] text-cyan-400 tracking-wider font-semibold">
+                    <div className="min-w-0">
+                      <span className="font-mono text-[9px] sm:text-[10px] text-cyan-400 tracking-wider font-semibold block">
                         {card.step}
                       </span>
-                      <h4 className="font-heading font-bold text-base text-white">{card.title}</h4>
+                      <h4 className="font-heading font-bold text-xs sm:text-base text-white truncate">{card.title}</h4>
                     </div>
                   </div>
 
-                  <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">
+                  <span className="px-1.5 py-0.5 rounded text-[8px] sm:text-[9px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold shrink-0">
                     {card.status}
                   </span>
                 </div>
 
-                <p className="text-xs text-zinc-300 mb-3 font-normal leading-relaxed">
+                <p className="text-[11px] sm:text-xs text-zinc-300 mb-2 sm:mb-3 font-normal leading-relaxed">
                   {card.tagline}
                 </p>
 
                 <div className="space-y-1 pt-2 border-t border-white/5">
                   {card.details.map((d, dIdx) => (
-                    <div key={dIdx} className="flex items-center gap-2 text-[11px] font-mono text-zinc-400">
-                      <span className="w-1 h-1 rounded-full bg-cyan-400"></span>
-                      <span>{d}</span>
+                    <div key={dIdx} className="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono text-zinc-400">
+                      <span className="w-1 h-1 rounded-full bg-cyan-400 shrink-0"></span>
+                      <span className="truncate">{d}</span>
                     </div>
                   ))}
                 </div>
 
                 {isTop && (
-                  <div className="mt-3 pt-2 flex items-center justify-between text-[10px] font-mono text-zinc-500">
-                    <span>Click or tap to cycle next layer</span>
-                    <span className="text-cyan-400 flex items-center gap-1">
+                  <div className="mt-2 sm:mt-3 pt-2 flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-zinc-500">
+                    <span>Tap to cycle layer</span>
+                    <span className="text-cyan-400 flex items-center gap-1 font-semibold">
                       Cycle <ArrowRight className="w-3 h-3" />
                     </span>
                   </div>

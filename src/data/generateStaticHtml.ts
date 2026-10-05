@@ -37,10 +37,25 @@ export function getSiteDomain(): string {
 }
 
 /**
- * Generates Schema.org JSON-LD structured data graph
+ * Generates rich Schema.org JSON-LD structured data graph for Google & AI crawlers
  */
 export function generateJsonLd(): string {
   const domain = getSiteDomain();
+
+  const projectSchemas = PROJECTS.map((proj) => ({
+    '@type': 'CreativeWork',
+    '@id': `${domain}/#project-${proj.id}`,
+    name: proj.title,
+    headline: proj.tagline,
+    description: proj.summary,
+    url: `${domain}/#projects`,
+    author: {
+      '@id': `${domain}/#person`,
+    },
+    keywords: proj.techStack.join(', '),
+    ...(proj.githubUrl ? { codeRepository: proj.githubUrl } : {}),
+  }));
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -48,33 +63,48 @@ export function generateJsonLd(): string {
         '@type': 'Person',
         '@id': `${domain}/#person`,
         name: 'Aryan',
-        jobTitle: 'Cybersecurity Student & Technical Builder',
+        alternateName: 'HE KNOWS SOMETHING',
+        jobTitle: 'Cybersecurity & AI Automation Systems Specialist',
         url: `${domain}/`,
+        image: `${domain}/og-image.png`,
         sameAs: [PERSONAL_INFO.github, PERSONAL_INFO.linkedin],
         knowsAbout: [
           'Cybersecurity',
+          'Threat Modeling & Defensive Architecture',
           'AI Agents',
-          'Workflow Automation',
+          'Tool Calling & Function Calling',
+          'Workflow Automation & Event Pipelines',
           'n8n',
+          'WhatsApp Cloud API Integration',
           'React',
           'TypeScript',
-          'GSAP',
-          'Three.js',
+          'WebGL & Three.js',
         ],
         description:
-          'Cybersecurity student and technical builder creating AI-powered automation, intelligent digital systems and high-performance web experiences.',
+          'Cybersecurity student and technical builder creating AI agents, automated workflow pipelines, defensive security guards, and tactile web experiences.',
       },
       {
         '@type': 'WebSite',
         '@id': `${domain}/#website`,
         url: `${domain}/`,
-        name: SITE_CONFIG.name,
+        name: 'Aryan | Cybersecurity & AI Automation Systems Specialist',
         description:
-          'Cybersecurity student and technical builder specializing in AI agents, workflow automation, and high-performance web experiences.',
+          'Cybersecurity student and technical builder building AI agents, workflow automation, and high-performance web experiences.',
         publisher: {
           '@id': `${domain}/#person`,
         },
+        inLanguage: 'en-US',
       },
+      {
+        '@type': 'ProfilePage',
+        '@id': `${domain}/#profilepage`,
+        url: `${domain}/`,
+        name: 'Aryan — Digital Engineering Practice & Portfolio',
+        mainEntity: {
+          '@id': `${domain}/#person`,
+        },
+      },
+      ...projectSchemas,
     ],
   };
 

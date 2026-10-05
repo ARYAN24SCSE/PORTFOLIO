@@ -10,7 +10,8 @@ export const CustomCursor: React.FC = () => {
   const isTouchDevice = typeof window !== 'undefined' && (
     window.matchMedia('(pointer: coarse)').matches ||
     'ontouchstart' in window ||
-    navigator.maxTouchPoints > 0
+    navigator.maxTouchPoints > 0 ||
+    window.innerWidth < 768
   );
 
   useEffect(() => {

@@ -53,28 +53,28 @@ export const AboutSection: React.FC = () => {
   const activeStage = STORY_STAGES[activeStageIndex];
 
   return (
-    <section id="about" className="py-28 relative bg-[#111613] border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="about" className="py-20 sm:py-28 relative bg-[#111613] border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         {/* Section Header Marker */}
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-16 pb-6 border-b border-white/10">
-          <div className="flex items-baseline gap-4">
-            <span className="font-mono text-xs text-[#FF0000] font-semibold tracking-wider">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 sm:gap-4 mb-10 sm:mb-16 pb-4 sm:pb-6 border-b border-white/10">
+          <div className="flex items-baseline gap-3 sm:gap-4">
+            <span className="font-mono text-xs text-[#FF0000] font-semibold tracking-wider shrink-0">
               01 // PERSPECTIVE
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-[#F4F1EA] tracking-tight font-heading">
               ABOUT
             </h2>
           </div>
-          <span className="font-mono text-xs text-[#858C87] uppercase tracking-widest">
+          <span className="font-mono text-[10px] sm:text-xs text-[#858C87] uppercase tracking-widest">
             TECHNICAL DIRECTION &amp; FOUNDATIONS
           </span>
         </div>
 
         {/* 2-Column Editorial Spread */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Left Column: Exactly 70–100 Word Editorial Biography */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="space-y-6 text-[#C2C5C0] text-base sm:text-[17px] leading-[1.75] font-normal font-body max-w-prose">
+          <div className="lg:col-span-5 space-y-6 sm:space-y-8">
+            <div className="space-y-4 sm:space-y-6 text-[#C2C5C0] text-sm sm:text-[17px] leading-relaxed sm:leading-[1.75] font-normal font-body max-w-prose">
               <p>
                 I'm a cybersecurity student using security as my core technical foundation, while spending my time figuring out how AI agents, automated workflows, and the web can connect together.
               </p>
@@ -84,28 +84,28 @@ export const AboutSection: React.FC = () => {
             </div>
 
             {/* Editorial Metadata Anchor */}
-            <div className="pt-6 border-t border-white/10 space-y-2 font-mono text-xs text-[#858C87]">
-              <div className="flex justify-between">
-                <span>FOCUS DOMAINS</span>
-                <span className="text-[#F4F1EA]">DEFENSIVE CYBER / AI WORKFLOWS</span>
+            <div className="pt-4 sm:pt-6 border-t border-white/10 space-y-2 font-mono text-[11px] sm:text-xs text-[#858C87]">
+              <div className="flex justify-between items-center gap-2">
+                <span className="shrink-0">FOCUS DOMAINS</span>
+                <span className="text-[#F4F1EA] text-right truncate">DEFENSIVE CYBER / AI WORKFLOWS</span>
               </div>
-              <div className="flex justify-between">
-                <span>ACADEMIC STATUS</span>
-                <span className="text-[#F4F1EA]">CYBERSECURITY STUDENT</span>
+              <div className="flex justify-between items-center gap-2">
+                <span className="shrink-0">ACADEMIC STATUS</span>
+                <span className="text-[#F4F1EA] text-right">CYBERSECURITY STUDENT</span>
               </div>
-              <div className="flex justify-between">
-                <span>LOCATION</span>
-                <span className="text-[#F4F1EA]">PUNJAB / NEW DELHI / REMOTE</span>
+              <div className="flex justify-between items-center gap-2">
+                <span className="shrink-0">LOCATION</span>
+                <span className="text-[#F4F1EA] text-right">PUNJAB / NEW DELHI / REMOTE</span>
               </div>
             </div>
 
             {/* Subtle Personal Note: Currently Curious About */}
-            <div className="pt-6 border-t border-white/10 space-y-2.5">
+            <div className="pt-4 sm:pt-6 border-t border-white/10 space-y-2.5">
               <div className="font-mono text-[10px] text-[#FF0000] uppercase tracking-widest font-semibold flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-[#FF0000]" />
+                <span className="w-1.5 h-1.5 bg-[#FF0000] shrink-0" />
                 <span>CURRENTLY CURIOUS ABOUT</span>
               </div>
-              <ul className="font-mono text-xs text-[#C2C5C0] space-y-1.5 pl-3 border-l border-white/10">
+              <ul className="font-mono text-[11px] sm:text-xs text-[#C2C5C0] space-y-1.5 pl-3 border-l border-white/10">
                 <li>• AI agents that gracefully recover from failed tool calls</li>
                 <li>• Making WhatsApp automation feel natural and reliable</li>
                 <li>• Making WebGL and 3D scenes load as fast as static pages</li>
@@ -114,9 +114,9 @@ export const AboutSection: React.FC = () => {
           </div>
 
           {/* Right Column: Scrollytelling Visual Narrative */}
-          <div className="lg:col-span-7 space-y-8">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             {/* Interactive Narrative Words */}
-            <div className="space-y-4">
+            <div className="space-y-2 sm:space-y-4">
               {STORY_STAGES.map((stage, idx) => {
                 const isActive = idx === activeStageIndex;
 
@@ -124,17 +124,20 @@ export const AboutSection: React.FC = () => {
                   <div
                     key={stage.id}
                     onClick={() => setActiveStageIndex(idx)}
-                    className={`cursor-pointer transition-all duration-300 pb-4 border-b ${
-                      isActive ? 'border-[#FF0000]' : 'border-white/5 hover:border-white/20'
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === 'Enter' && setActiveStageIndex(idx)}
+                    className={`cursor-pointer transition-all duration-300 py-3 sm:py-4 px-2 rounded sm:rounded-none border-b ${
+                      isActive ? 'border-[#FF0000] bg-white/2' : 'border-white/5 hover:border-white/20'
                     }`}
                   >
-                    <div className="flex items-baseline justify-between">
-                      <div className="flex items-baseline gap-4">
-                        <span className="font-mono text-xs text-[#858C87]">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-baseline gap-3 sm:gap-4 min-w-0">
+                        <span className="font-mono text-xs text-[#858C87] shrink-0">
                           {stage.num}
                         </span>
                         <span
-                          className={`font-heading text-2xl sm:text-4xl font-bold tracking-tight transition-colors duration-300 ${
+                          className={`font-heading text-lg xs:text-xl sm:text-4xl font-bold tracking-tight transition-colors duration-300 truncate ${
                             isActive ? 'text-[#F4F1EA]' : 'text-[#858C87] hover:text-[#C2C5C0]'
                           }`}
                         >
@@ -142,8 +145,8 @@ export const AboutSection: React.FC = () => {
                         </span>
                       </div>
                       <span
-                        className={`font-mono text-[10px] tracking-wider transition-colors ${
-                          isActive ? 'text-[#FF0000]' : 'text-zinc-600'
+                        className={`font-mono text-[10px] tracking-wider shrink-0 transition-colors ${
+                          isActive ? 'text-[#FF0000] font-semibold' : 'text-zinc-600'
                         }`}
                       >
                         {isActive ? 'ACTIVE FOCUS' : 'INSPECT'}
@@ -162,28 +165,29 @@ export const AboutSection: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className="p-8 bg-[#161B18] border border-white/10 rounded-none relative overflow-hidden"
+                className="p-5 sm:p-8 bg-[#161B18] border border-white/10 rounded-none relative overflow-hidden"
               >
                 {/* Subtle hairline background grid */}
-                <div className="absolute top-0 right-0 p-4 font-mono text-[10px] text-[#858C87]">
+                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 font-mono text-[9px] sm:text-[10px] text-[#858C87] max-w-35 text-right truncate">
                   {activeStage.metric}
                 </div>
 
-                <div className="max-w-lg space-y-3">
-                  <div className="font-mono text-xs text-[#FF0000] tracking-wider uppercase">
+                <div className="max-w-lg space-y-2.5 sm:space-y-3 pt-4 sm:pt-0">
+                  <div className="font-mono text-[10px] sm:text-xs text-[#FF0000] tracking-wider uppercase font-semibold">
                     STAGE {activeStage.num} // {activeStage.title}
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#F4F1EA] font-heading tracking-tight">
+                  <h3 className="text-lg sm:text-2xl font-bold text-[#F4F1EA] font-heading tracking-tight">
                     {activeStage.headline}
                   </h3>
-                  <p className="text-sm text-[#C2C5C0] leading-relaxed font-normal">
+                  <p className="text-xs sm:text-sm text-[#C2C5C0] leading-relaxed font-normal">
                     {activeStage.detail}
                   </p>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-[#858C87]">
-                  <span>TAP OR CLICK OTHER DISCIPLINES TO CYCLE</span>
-                  <span className="text-[#C2C5C0] flex items-center gap-1">
+                <div className="mt-6 sm:mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] sm:text-xs font-mono text-[#858C87]">
+                  <span className="hidden xs:inline">TAP DISCIPLINES TO CYCLE</span>
+                  <span className="xs:hidden">TAP TO CYCLE</span>
+                  <span className="text-[#C2C5C0] flex items-center gap-1 font-medium">
                     NEXT {activeStageIndex < STORY_STAGES.length - 1 ? '0' + (activeStageIndex + 2) : '01'}
                     <ArrowUpRight className="w-3.5 h-3.5 text-[#FF0000]" />
                   </span>

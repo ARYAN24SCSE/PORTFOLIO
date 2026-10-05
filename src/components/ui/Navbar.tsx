@@ -15,27 +15,38 @@ export const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 30);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile drawer when window resizes to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'header-glass py-4'
-          : 'bg-transparent py-7'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled || mobileMenuOpen
+          ? 'header-glass py-3.5 sm:py-4'
+          : 'bg-transparent py-5 sm:py-7'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
         {/* Brand identity colophon */}
         <a
           href="#hero"
-          className="group flex items-baseline gap-3 focus:outline-none"
+          className="group flex items-baseline gap-2.5 sm:gap-3 focus:outline-none max-w-[70vw] sm:max-w-none"
         >
-          <span className="font-heading font-bold text-xl tracking-tight text-[#F4F1EA] group-hover:text-[#FF0000] transition-colors">
+          <span className="font-heading font-bold text-base sm:text-xl tracking-tight text-[#F4F1EA] group-hover:text-[#FF0000] transition-colors truncate">
             HE KNOWS SOMETHING
           </span>
           <span className="text-[10px] font-mono tracking-widest text-[#858C87] uppercase hidden sm:inline-block">
@@ -73,35 +84,41 @@ export const Navbar: React.FC = () => {
         {/* Mobile menu trigger */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-[#858C87] hover:text-[#F4F1EA] focus:outline-none"
+          className="md:hidden p-2.5 rounded-md border border-white/10 bg-white/5 text-[#C2C5C0] hover:text-[#F4F1EA] hover:border-[#FF0000] active:scale-95 transition-all focus:outline-none"
           aria-label="Toggle Navigation"
+          aria-expanded={mobileMenuOpen}
         >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileMenuOpen ? <X className="w-5 h-5 text-[#FF0000]" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Glass Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#111613] border-b border-white/10 px-6 py-6 space-y-4">
+        <div className="md:hidden bg-[#111613]/95 backdrop-blur-xl border-b border-white/10 px-5 py-6 space-y-3 mt-3 shadow-2xl">
           {NAV_LINKS.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-between text-sm font-mono text-[#C2C5C0] hover:text-[#F4F1EA] py-2 border-b border-white/5"
+              className="flex items-center justify-between text-sm font-mono text-[#C2C5C0] hover:text-[#F4F1EA] py-3 px-3 rounded-md hover:bg-white/5 border-b border-white/5 transition-colors"
             >
-              <span>{link.name}</span>
-              <span className="text-xs text-[#858C87]">{link.num}</span>
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-[#FF0000] font-semibold">{link.num}</span>
+                <span className="tracking-wide font-medium">{link.name}</span>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-[#858C87]" />
             </a>
           ))}
-          <a
-            href="#contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center justify-between text-xs font-mono text-[#FF0000] pt-2"
-          >
-            <span>INQUIRE / COLLABORATE</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </a>
+          <div className="pt-2">
+            <a
+              href="#contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-between text-xs font-mono text-[#111613] bg-[#F4F1EA] hover:bg-white font-semibold py-3 px-4 rounded transition-colors"
+            >
+              <span>INQUIRE / COLLABORATE</span>
+              <ArrowUpRight className="w-4 h-4 text-[#FF0000]" />
+            </a>
+          </div>
         </div>
       )}
     </header>

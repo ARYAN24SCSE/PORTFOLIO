@@ -97,23 +97,23 @@ export const HeroSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen flex flex-col justify-between pt-32 pb-8 overflow-hidden bg-[#111613]"
+      className="relative min-h-screen flex flex-col justify-between pt-28 sm:pt-32 pb-8 overflow-hidden bg-[#111613]"
     >
       {/* Background Depth Plane: Subtle photographic tonal depth gradient */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_80%_80%_at_65%_40%,#161B18_0%,#111613_60%,#0B0F0D_100%)]" />
 
       {/* Architectural Coordinate Grid */}
-      <div className="absolute inset-0 pointer-events-none opacity-30 select-none">
-        <div className="absolute top-28 left-8 sm:left-14 font-mono text-[9px] text-[#858C87] tracking-widest uppercase">
+      <div className="absolute inset-0 pointer-events-none opacity-30 select-none hidden xs:block">
+        <div className="absolute top-20 sm:top-28 left-4 sm:left-14 font-mono text-[8px] sm:text-[9px] text-[#858C87] tracking-widest uppercase">
           INDEX // 2026.01
         </div>
-        <div className="absolute top-28 right-8 sm:right-14 font-mono text-[9px] text-[#858C87] tracking-widest uppercase text-right">
+        <div className="absolute top-20 sm:top-28 right-4 sm:right-14 font-mono text-[8px] sm:text-[9px] text-[#858C87] tracking-widest uppercase text-right">
           LAT 28.6139° N / LON 77.2090° E
         </div>
       </div>
 
-      {/* Midground 3D Digital Sculpture (Spans right half and crosses centerline) */}
-      <div className="absolute top-0 right-0 w-full lg:w-3/5 h-full pointer-events-auto z-10 opacity-95 overflow-hidden max-w-full">
+      {/* Midground 3D Digital Sculpture (Spans right half and crosses centerline, touch transparent on mobile) */}
+      <div className="absolute top-0 right-0 w-full lg:w-3/5 h-full pointer-events-none lg:pointer-events-auto z-10 opacity-90 lg:opacity-95 overflow-hidden max-w-full">
         {load3D ? (
           <Suspense fallback={<FallbackVisual />}>
             <LazyHeroScene />
@@ -124,38 +124,38 @@ export const HeroSection: React.FC = () => {
       </div>
 
       {/* Foreground Content: Asymmetric Editorial Composition */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full z-20 pointer-events-none my-auto">
-        <div className="max-w-3xl space-y-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full z-20 pointer-events-none my-auto py-6 sm:py-0">
+        <div className="max-w-3xl space-y-6 sm:space-y-8">
           {/* Identity Tag with subtle red focus indicator */}
-          <div className="pointer-events-auto inline-flex items-center gap-2.5 font-mono text-xs tracking-widest text-[#F4F1EA] uppercase">
-            <span className="w-1.5 h-1.5 bg-[#FF0000]" />
-            <span className="text-[#C2C5C0]">CYBERSECURITY / AI / AUTOMATION</span>
+          <div className="pointer-events-auto inline-flex items-center gap-2 font-mono text-[10px] sm:text-xs tracking-widest text-[#F4F1EA] uppercase">
+            <span className="w-1.5 h-1.5 bg-[#FF0000] shrink-0" />
+            <span className="text-[#C2C5C0] truncate">CYBERSECURITY / AI / AUTOMATION</span>
           </div>
 
           {/* Massive Display Typography: ARYAN with subtle red index marker */}
-          <div className="relative inline-block">
+          <div className="relative inline-block max-w-full">
             <h1
               ref={headlineRef}
-              className="text-7xl sm:text-8xl md:text-9xl lg:text-[11rem] font-bold text-[#F4F1EA] tracking-tighter leading-[0.88] select-none font-heading will-change-transform"
+              className="text-5xl xs:text-6xl sm:text-8xl md:text-9xl lg:text-[11rem] font-bold text-[#F4F1EA] tracking-tighter leading-[0.9] sm:leading-[0.88] select-none font-heading will-change-transform"
             >
               ARYAN
             </h1>
-            <span className="absolute -top-2 -right-6 font-mono text-xs text-[#FF0000] font-semibold tracking-wider select-none">
+            <span className="absolute -top-1 sm:-top-2 -right-4 sm:-right-6 font-mono text-[10px] sm:text-xs text-[#FF0000] font-semibold tracking-wider select-none">
               [01]
             </span>
           </div>
 
           {/* Editorial Positioning Statement */}
-          <div ref={copyRef} className="space-y-4 max-w-xl will-change-transform pointer-events-auto">
-            <p className="text-xl sm:text-2xl font-normal text-[#F4F1EA] tracking-tight leading-snug font-heading">
+          <div ref={copyRef} className="space-y-3 sm:space-y-4 max-w-xl will-change-transform pointer-events-auto">
+            <p className="text-lg xs:text-xl sm:text-2xl font-normal text-[#F4F1EA] tracking-tight leading-snug font-heading">
               Building AI agents, automation pipelines, and experimental web interfaces.
             </p>
-            <p className="text-sm sm:text-base text-[#C2C5C0] font-normal leading-relaxed">
+            <p className="text-xs sm:text-base text-[#C2C5C0] font-normal leading-relaxed">
               Cybersecurity student who tends to build things to figure out how they actually behave under the hood.
             </p>
 
             {/* Magnetic Studio CTAs */}
-            <div className="flex flex-wrap items-center gap-4 pt-4">
+            <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-3 sm:gap-4 pt-2 sm:pt-4">
               <MagneticButton href="#projects" variant="studio">
                 <span>VIEW PROJECTS</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -173,9 +173,9 @@ export const HeroSection: React.FC = () => {
       {/* Bottom Metadata Bar */}
       <div
         ref={bottomBarRef}
-        className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full z-20 pointer-events-auto pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[11px] font-mono text-[#858C87]"
+        className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full z-20 pointer-events-auto pt-4 sm:pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 text-[10px] sm:text-[11px] font-mono text-[#858C87]"
       >
-        <div className="flex items-center gap-6">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
           <span>01 PERSPECTIVE</span>
           <span>02 SCOPE</span>
           <span>03 WORK</span>
@@ -183,7 +183,7 @@ export const HeroSection: React.FC = () => {
         </div>
         <div className="flex items-center gap-2 text-[#C2C5C0]">
           <span>SCROLL TO EXPLORE</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#FF0000] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#FF0000] animate-pulse shrink-0" />
         </div>
       </div>
     </section>
